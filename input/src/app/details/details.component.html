@@ -1,0 +1,79 @@
+
+<div>
+<mat-drawer-container class="example-container">
+    <div class="det">
+    <form class="example-form" (ngSubmit)="onSubmit(userForm)" #userForm="ngForm"  >
+        <mat-form-field class="example-full-width">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Ex: kavin" name="name" id="nam" ngModel required #na="ngModel">
+          <span *ngIf="na.invalid && na.touched" >Please enter the name!</span>
+        </mat-form-field>
+        
+
+        <mat-form-field class="example-full-width" >
+            <mat-label>Age</mat-label>
+            <input matInput placeholder="Ex:23"  name="age" id="ag" ngModel  required #a="ngModel">
+            <span *ngIf="a.invalid && a.touched" >Please enter the age!</span>
+          </mat-form-field>
+
+          <!-- <mat-form-field appearance="fill">
+            <mat-label>Gender</mat-label>
+            <mat-select>
+              <mat-option value="one">Male</mat-option>
+              <mat-option value="two">Female</mat-option>
+            </mat-select>
+          </mat-form-field> -->
+          <mat-form-field class="example-full-width">
+            <mat-label>Gender</mat-label>
+            <input matInput placeholder="Ex:Male"  name="gender" id="gen" ngModel required #ge="ngModel">
+            <span *ngIf="ge.invalid && ge.touched" >Please enter the gender!</span>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>State</mat-label>
+            <input matInput placeholder="Ex:Karnataka"  name="state" id="sta" ngModel required #st="ngModel">
+            <span *ngIf="st.invalid && st.touched" >Please enter the state!</span>
+          </mat-form-field>
+      <button mat-raised-button color="warn" >Sumbit</button>
+
+      <!-- <button mat-raised-button color="primary" routerLink="tablepage" style="margin-left: 2%;">ViewDetails</button> -->
+        
+      </form>
+    </div>
+  </mat-drawer-container>
+</div>
+
+<div>
+  <div class="tab">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    
+        
+        <ng-container matColumnDef="Name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+        </ng-container>
+      
+       
+        <ng-container matColumnDef="age">
+          <th mat-header-cell *matHeaderCellDef> Age </th>
+          <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+        </ng-container>
+      
+        
+        <ng-container matColumnDef="gender">
+          <th mat-header-cell *matHeaderCellDef> Gender </th>
+          <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+        </ng-container>
+      
+       
+        <ng-container matColumnDef="state">
+          <th mat-header-cell *matHeaderCellDef> State </th>
+          <td mat-cell *matCellDef="let element"> {{element.state}} </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+
+</div>
